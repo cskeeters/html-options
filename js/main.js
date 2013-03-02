@@ -120,7 +120,7 @@ $(document).ready(function () {
   for (var i in all_reqs) {
     var req = all_reqs[i];
     console.log(all_reqs[i]);
-    filter_html += '<button id="'+req+'" type="button" class="btn btn-primary check" data-toggle="button" onclick="filter_change()">'+req+'</button>';
+    filter_html += '<button id="'+req+'" type="button" class="btn btn-primary btn-small check" data-toggle="button" onclick="filter_change()">'+req+'</button>';
   }
   filter_html += "<br>";
   filter_html += "<br>";

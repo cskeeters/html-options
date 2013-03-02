@@ -24,62 +24,64 @@
     </head>
     <body>
 
-        <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+      <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="brand" href="#">Flight Options</a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav pull-right">
-                            <li><a href="https://bitbucket.org/cskeeters/html-options">About</a></li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
-                </div>
-            </div>
+      <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="navbar-inner">
+              <div class="container">
+                  <a class="brand" href="#">Flight Options</a>
+                  <div class="nav-collapse collapse">
+                      <ul class="nav pull-right">
+                          <li><a href="https://bitbucket.org/cskeeters/html-options">About</a></li>
+                      </ul>
+                  </div><!--/.nav-collapse -->
+              </div>
+          </div>
+      </div>
+
+      <div class="jumbotron">
+        <div class="container">
+          <!-- Main hero unit for a primary marketing message or call to action -->
+          <h1>Your Options Simplified..</h1>
+          <p>
+            Filter your options by the requirements you select.
+          </p>
+          <br/>
+        </div>
+      </div>
+
+      <div class="container">
+        <!--Option template
+        <div data-name="Name" data-req="r1 r2 r3" data-price="100" class="opt">
+          Description text
+        </div>
+        -->
+
+        <div class="row">
+          <div class="span4">
+            <!--Where the checkboxes go-->
+            <h3>Requirements</h3>
+            <div id="filter"></div>
+          </div>
+          <div class="span8">
+            <div class="opt" data-name="Delta" data-req="" data-price="250"></div>
+            <div class="opt" data-name="Southwest" data-req="Non-Stop Frequent-Flier" data-price="320"></div>
+            <div class="opt" data-name="American" data-req="Frequent-Flier WiFi" data-price="500"></div>
+          </div>
         </div>
 
-        <div class="container">
+        <!--<hr>-->
+        <!--<footer>-->
+            <!--<p>&copy; Company 2013</p>-->
+        <!--</footer>-->
 
-            <!-- Main hero unit for a primary marketing message or call to action -->
-            <div class="hero-unit">
-                <h1>>> Delta / $100</h1>
-                <br/>
-                <!--Where the checkboxes go-->
-                <h2>Requirements / Price Impact</h2>
-                <div id="filter">
-                </div>
-            </div>
+      </div> <!-- /container -->
 
-            <!--Option template
-            <div data-name="Name" data-req="r1 r2 r3" data-price="100" class="opt">
-              Description text
-            </div>
-            -->
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+      <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.js"><\/script>')</script>
 
-            <div class="row">
-              <div class="opt span12" data-name="Delta" data-req="" data-price="250"></div>
-            </div>
-            <div class="row">
-              <div class="opt span12" data-name="Southwest" data-req="Non-Stop Frequent-Flier" data-price="320"></div>
-            </div>
-            <div class="row">
-              <div class="opt span12" data-name="American" data-req="Frequent-Flier WiFi" data-price="500"></div>
-            </div>
+      <script src="js/vendor/bootstrap.min.js"></script>
 
-            <hr>
-
-            <footer>
-                <p>&copy; Company 2013</p>
-            </footer>
-
-        </div> <!-- /container -->
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.js"><\/script>')</script>
-
-        <script src="js/vendor/bootstrap.min.js"></script>
-
-        <script src="js/main.js"></script>
+      <script src="js/main.js"></script>
     </body>
 </html>
