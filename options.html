@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Options</title>
+  <!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+  <script>
+
+    var all_reqs = [];
+
+    function get_reqs(el) {
+      var reqs = $(el).attr("data-req");
+      if (!reqs) return [];
+      reqs = reqs.replace(/(\r\n|\n|\r)/gm," ");
+      reqs = reqs.split(" ").map($.trim);
+      while (reqs.indexOf('') != -1) {
+        reqs.splice(all_reqs.indexOf(''), 1);
+      }
+      return reqs;
+    }
+
+    function matches(el, on) {
+      if (on.length == 0) return true;
+
+      var reqs = get_reqs(el);
+
+      for (var i in on) {
+        //console.log("checking "+on[i]);
+        if ($.inArray(on[i], reqs) == -1) {
+          //console.log("does not have "+on[i]);
+          return false;
+        }
+      }
+
+      return true;
+    }
+
+    function is_on(req) {
+      return $("#"+req).is(':checked');
+    }
+
+    function get_on() {
+      var on = [];
+      for (var i in all_reqs) {
+        //console.log("checking "+all_reqs[i]);
+        var checked = is_on(all_reqs[i]);
+        if (checked) {
+          on.push(all_reqs[i]);
+        }
+      }
+      return on;
+    }
+
+    function calc_min_price(reqs) {
+      var min_price = "999999";
+      $(".opt").each(function() {
+        if (matches(this, reqs)) {
+          var price = parseInt($(this).attr("data-price"));
+          if (price < min_price) {
+            min_price = price;
+          }
+        }
+      });
+      if (min_price == "999999") return "N/A"
+      return min_price;
+    }
+
+    function update_costs() {
+      for (var i in all_reqs) {
+        var req = all_reqs[i];
+        var on = get_on();
+        if (is_on(req)) {
+          on.splice(on.indexOf(req), 1);
+        } else {
+          on.push(req);
+        }
+        var min_price = calc_min_price(on);
+        console.log(on+" "+min_price);
+        $('#cost_'+req).html("$"+min_price);
+      }
+    }
+
+    function filter_change() {
+      var on = get_on();
+      console.log(on);
+
+      $(".opt").each(function() {
+        if (matches(this, on)) {
+          $(this).removeClass("hidden");
+        } else {
+          $(this).addClass("hidden");
+        }
+      });
+      update_costs();
+    }
+
+    function transform(el) {
+      var name = $(el).attr("data-name");
+      var price = $(el).attr("data-price");
+      $(el).html("<h1>"+name+" - $"+price+"</h1>"+$(el).html());
+    }
+
+    $(document).ready(function () {
+      $(".opt").each(function(index) {
+        var reqs = get_reqs(this);
+        all_reqs = all_reqs.concat(reqs);
+        transform(this);
+      });
+
+      //removes duplicates
+      all_reqs = all_reqs.filter(function(elem, pos) {
+          // return true (match/keep) if the first index of the element is equal to the current position
+          return all_reqs.indexOf(elem) == pos;
+      });
+
+      all_reqs = all_reqs.sort();
+      if (all_reqs.indexOf('') != -1) {
+        all_reqs.splice(all_reqs.indexOf(''), 1);
+      }
+      console.log('All Requirements ' + all_reqs);
+
+      var filter_html = "";
+      for (var i in all_reqs) {
+        console.log(all_reqs[i]);
+        filter_html += "<div class='check'><label for='"+all_reqs[i]+"'><input type=checkbox onchange='filter_change()' name='"+all_reqs[i]+"' id='"+all_reqs[i]+"'/>"+all_reqs[i]+" <span id='cost_"+all_reqs[i]+"' class='cost'></span></label></div>";
+      }
+      filter_html += "<br>";
+      filter_html += "<br>";
+
+      $("#filter").html($("#filter").html()+filter_html);
+      update_costs();
+    });
+  </script>
+  <style>
+    body {
+      font-family:Avenir, 'TeX Gyre Heros', 'Helvetica';
+      font-size:13px;
+    }
+    .hidden { display:none;}
+    #filter h1 {
+      font-size:1.1em;
+      font-weight:bold;
+    }
+    #filter {
+      background-color:#EEA;
+      padding:10px;
+      border:2px solid black;
+    }
+    .search, .google_disp {
+      margin-top:20px;
+      float:right;
+      font-family:Helvetica, sans;
+    }
+    .retina {
+      width:0px; /* aligns funny without this, works better when no images exists too */
+      transform: scale(.5, .5);
+      -ms-transform: scale(.5, .5); /* IE 9 */
+      -webkit-transform: scale(.5, .5); /* Safari and Chrome */
+      -o-transform: scale(.5, .5); /* Opera */
+      -moz-transform: scale(.5, .5); /* Firefox */
+    }
+    .s1 {
+      font-size:13px;
+      margin-bottom:.5em;
+    }
+    .s2 {
+      font-size:11px;
+    }
+    .opt {
+      clear:both;
+    }
+    .opt h1 {
+      -color:#33A;
+    }
+  </style>
+</head>
+<body>
+
+  <!--Where the checkboxes go-->
+  <div id="filter">
+    <h1>Filter Options</h1>
+  </div>
+
+  <!--Option template
+
+  <div data-name="Name" data-req="r1 r2 r3" data-price="100" class="opt">
+    Description text
+  </div>
+
+  -->
+
+  <div data-name="Delta" data-req="" data-price="250" class="opt"></div>
+  <div data-name="Southwest" data-req="ns ff" data-price="320" class="opt"></div>
+  <div data-name="American" data-req="ff wifi" data-price="500" class="opt"></div>
+
+</body>
+</html>
