@@ -1,0 +1,44 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body {
+  /*font-family:Avenir, 'TeX Gyre Heros', 'Helvetica';*/
+  /*font-size:13px;*/
+}
+.hidden { display:none;}
+#filter h1 {
+  font-size:1.1em;
+  font-weight:bold;
+}
+#filter {
+}
+.search, .google_disp {
+  margin-top:20px;
+  float:right;
+  font-family:Helvetica, sans;
+}
+.retina {
+  width:0px; /* aligns funny without this, works better when no images exists too */
+  transform: scale(.5, .5);
+  -ms-transform: scale(.5, .5); /* IE 9 */
+  -webkit-transform: scale(.5, .5); /* Safari and Chrome */
+  -o-transform: scale(.5, .5); /* Opera */
+  -moz-transform: scale(.5, .5); /* Firefox */
+}
+.s1 {
+  font-size:13px;
+  margin-bottom:.5em;
+}
+.s2 {
+  font-size:11px;
+}
+.opt {
+}
+.opt h1 {
+  -color:#33A;
+}
+.check {
+  display:block;
+  margin-top:10px;
+}
