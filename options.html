@@ -66,6 +66,8 @@
     }
 
     function update_costs() {
+      var on = get_on();
+      var base_cost = calc_min_price(on);
       for (var i in all_reqs) {
         var req = all_reqs[i];
         var on = get_on();
@@ -76,7 +78,7 @@
         }
         var min_price = calc_min_price(on);
         console.log(on+" "+min_price);
-        $('#cost_'+req).html("$"+min_price);
+        $('#cost_'+req).html("$"+(min_price-base_cost));
       }
     }
 
