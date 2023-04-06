@@ -1,7 +1,8 @@
-/* Color palette: https://www.happyhues.co/palettes/5 */
+/* Color palette: https://www.happyhues.co/palettes/10 */
 
 :root {
 
+  --darker-green: #0f3433;
   --dark-green: #004643;
   --white: #fffffe;
   --off-white: #e8e4e6;
@@ -46,30 +47,16 @@
   --stroke: var(--p);
 }
 
-.dark {
-  --bg: var(--dark-green);
+.light {
+  --bg: var(--light-green);
   --p: var(--off-white);
   --a: var(--off-white);
 
-  --h: var(--white);
-  --sh: var(--off-white);
+  --h: var(--black);
+  --sh: var(--darker-green);
 
-  --card-bg: var(--off-white);
-  --card-h: var(--dark-green);
-  --card-sh: var(--h);
-  --card-p: var(--gray-green);
-}
-
-.pink {
-  --bg: var(--pink);
-  --p: var(--dark-green);
-  --a: var(--dark-pink);
-
-  --h: var(--dark-green);
-  --sh: var(--dark-green);
-
-  --card-bg: var(--off-white);
-  --card-h: var(--dark-green);
-  --card-sh: var(--h);
-  --card-p: var(--dark-green);
+  --card-bg: var(--dark-green);
+  --card-h: var(--white);
+  --card-sh: var(--card-h);
+  --card-p: var(--light-green);
 }
