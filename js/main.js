@@ -97,7 +97,7 @@ function transform(el) {
   var reqs = get_reqs(el);
 
   var html = '<h1>'+name+'</h1>' +
-             '<div class="price">$'+price+'</div>' +
+             '<div class="price">$'+parseInt(price).toLocaleString("en-US")+'</div>' +
              '<div class="content span">'+$(el).html()+'</div>';
 
   html += '<div class="tags span">';
