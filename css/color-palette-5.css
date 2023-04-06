@@ -1,0 +1,75 @@
+/* Color palette: https://www.happyhues.co/palettes/5 */
+
+:root {
+
+  --dark-green: #004643;
+  --white: #fffffe;
+  --off-white: #e8e4e6;
+  --black: #001e1d;
+  --dark-gray: #0f3433;
+  --gray-green: #475d5b;
+  --light-green: #abd1c6;
+  --yellow: #f9bc60;
+  --pink: #ffa8ba;
+  --dark-pink: #d8779a;
+  --red: #fa5246;
+
+  --nav-a: var(--white);
+
+  /* Defaults are .dark */
+
+  --bg: var(--dark-green);
+  --p: var(--light-green);
+  --a: var(--dark-pink);
+
+  --title: var(--white);
+  --h: var(--white);
+  --sh: var(--h);
+
+  --card-bg: var(--off-white);
+  --card-p: var(--dark-gray);
+  --card-a: var(--a);
+
+  --card-h: var(--black);
+  --card-sh: var(--card-h);
+
+  --tag-bg: var(--dark-green);
+  --tag: var(--white);
+
+  --button-bg: var(--dark-green);
+  --button: var(--white);
+
+  --button-bg-active: var(--yellow);
+  --button-fg-active: var(--dark-green);
+
+  --highlight: var(--yellow);
+  --stroke: var(--p);
+}
+
+.dark {
+  --bg: var(--dark-green);
+  --p: var(--off-white);
+  --a: var(--off-white);
+
+  --h: var(--white);
+  --sh: var(--off-white);
+
+  --card-bg: var(--off-white);
+  --card-h: var(--dark-green);
+  --card-sh: var(--h);
+  --card-p: var(--gray-green);
+}
+
+.pink {
+  --bg: var(--pink);
+  --p: var(--dark-green);
+  --a: var(--dark-pink);
+
+  --h: var(--dark-green);
+  --sh: var(--dark-green);
+
+  --card-bg: var(--off-white);
+  --card-h: var(--dark-green);
+  --card-sh: var(--h);
+  --card-p: var(--dark-green);
+}

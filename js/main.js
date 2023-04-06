@@ -70,7 +70,7 @@ function update_costs() {
     }
     var min_price = calc_min_price(on);
     console.log(on+" "+min_price);
-    $('#'+req).html($("#"+req).attr('id')+" $"+(min_price-base_cost));
+    $('#'+req).html($("#"+req).attr('id')+' ($'+(min_price-base_cost)+')');
   }
 }
 
@@ -94,10 +94,21 @@ function filter_change() {
 function transform(el) {
   var name = $(el).attr("data-name");
   var price = $(el).attr("data-price");
-  $(el).html("<h2>"+name+" - $"+price+"</h2>"+$(el).html());
+  var reqs = get_reqs(el);
+
+  var html = '<h1>'+name+'</h1>' +
+             '<div class="price">$'+price+'</div>' +
+             '<div class="content span">'+$(el).html()+'</div>';
+
+  html += '<div class="tags span">';
+  for (var i in reqs) {
+    html += '<div class="tag">'+reqs[i]+'</div>';
+  }
+  html += '<div>';
+  $(el).html(html);
 }
 
-$(document).ready(function () {
+function window_onload() {
   $(".opt").each(function(index) {
     var reqs = get_reqs(this);
     all_reqs = all_reqs.concat(reqs);
@@ -120,15 +131,17 @@ $(document).ready(function () {
   for (var i in all_reqs) {
     var req = all_reqs[i];
     console.log(all_reqs[i]);
-    filter_html += '<button id="'+req+'" type="button" class="btn btn-primary btn-small check" data-toggle="button" onclick="filter_change()">'+req+'</button>';
+    filter_html += '<button id="'+req+'" type="button" class="filter" data-toggle="button" onclick="filter_change()">'+req+'</button>';
   }
   filter_html += "<br>";
   filter_html += "<br>";
 
   $("#filter").html($("#filter").html()+filter_html);
 
-  $("button.check").click(filter_change);
+  $("button.filter").click(filter_change);
 
   update_costs();
-});
+}
+
+$(document).ready(window_onload);
 

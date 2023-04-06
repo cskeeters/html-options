@@ -1,0 +1,85 @@
+div.section {
+  background-color: var(--bg);
+  color: var(--p);
+}
+div.section h1,
+div.section h2,
+div.section h3,
+div.section h4,
+div.section h5 {
+  color: var(--h);
+}
+
+.section .sub-heading {
+  color: var(--sh);
+  font-size: 1.2em;
+}
+
+a {
+  color: var(--a);
+}
+
+nav a {
+  color: var(--nav-a);
+}
+
+button {
+  background-color: var(--button-bg);
+  color: var(--button-fg);
+  border: 2px solid var(--dark-gray)
+}
+
+/* Filter selected */
+button.active {
+  background-color: var(--button-bg-active);
+  color: var(--button-fg-active);
+}
+
+button:hover {
+  background-color: var(--button-bg-active);
+  color: var(--button-fg-active);
+}
+
+.card {
+  background-color: var(--card-bg);
+  color: var(--card-p);
+}
+
+div.section .card h1,
+div.section .card h2,
+div.section .card h3,
+div.section .card h4 {
+  color: var(--card-h);
+}
+
+.card a {
+  color: var(--card-a);
+}
+
+
+.card .button {
+  background-color: var(--card-button-bg);
+  color: var(--card-button-fg);
+  border: 3px solid var(--stroke);
+}
+
+.card .tag {
+  background-color: var(--tag-bg);
+  color: var(--tag);
+}
+
+
+.stroke {
+  border: 2px solid var(--stroke);
+}
+
+/* Override heading for title */
+.section header h1,
+.section header h2 {
+  color: var(--title);
+}
+
+.button.highlight {
+  background-color: var(--highlight);
+  color: var(--off-white);
+}
